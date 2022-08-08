@@ -7,6 +7,7 @@ declare global {
       UI: UIConfig;
       CHAINBRIDGE: ChainbridgeConfig;
       INDEXER_URL: string;
+      destinationBridge: any;
     };
   }
 }

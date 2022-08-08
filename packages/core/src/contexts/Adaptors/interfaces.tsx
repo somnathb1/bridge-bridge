@@ -84,6 +84,7 @@ export interface DestinationChainContext {
   depositVotes: number;
   setDepositVotes: (input: number) => void;
   disconnect: () => Promise<void>;
+  // handleProposalVote: () => Promise<void>,
   tokensDispatch: Dispatch<AddMessageAction | ResetAction | TxIsDone>;
   inTransitMessages?: TransitState;
   transferTxHash?: string;

@@ -17,6 +17,7 @@ export const EVMDestinationAdaptorProvider = ({
     destinationChainConfig,
     homeChainConfig,
     setTransactionStatus,
+    setDepositNonce,
     transactionStatus,
   } = useWeb3();
 
@@ -37,19 +38,20 @@ export const EVMDestinationAdaptorProvider = ({
 
   const destinationBridge = useDestinationBridgeHook(destinationChainConfig);
 
+  // setDepositNonce("Random"); //TODO
   useEffect(() => {
     if (
       destinationChainConfig &&
       homeChainConfig?.domainId !== null &&
       homeChainConfig?.domainId !== undefined &&
       destinationBridge &&
-      depositNonce &&
+      // depositNonce &&
       !inTransitMessages.txIsDone
     ) {
       handleProposalEvent(
         destinationBridge,
         homeChainConfig,
-        depositNonce,
+        "depositNonce",
         destinationChainConfig,
         setTransactionStatus,
         setTransferTxHash,
@@ -59,16 +61,16 @@ export const EVMDestinationAdaptorProvider = ({
       handleProposalVote(
         destinationBridge,
         homeChainConfig,
-        depositNonce,
+        "depositNonce",
         depositVotes,
         tokensDispatch,
         setDepositVotes,
         transactionStatus
       );
     }
-    return () => {
+    else return () => {
       //@ts-ignore
-      destinationBridge?.removeAllListeners();
+      // destinationBridge?.removeAllListeners();
     };
   }, [
     depositNonce,
@@ -88,6 +90,7 @@ export const EVMDestinationAdaptorProvider = ({
         transferTxHash,
         depositVotes,
         setDepositVotes,
+        // () => {},
         inTransitMessages,
         tokensDispatch,
         disconnect: async () => {},

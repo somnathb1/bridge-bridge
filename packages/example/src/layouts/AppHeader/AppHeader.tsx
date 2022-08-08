@@ -30,7 +30,7 @@ const AppHeader: React.FC<IAppHeader> = () => {
         {/* <div className={classes.logo}>
         </div> */}
         <div className={classes.mainTitle}>
-          <Typography variant="h5">ChainBridge Token Swap</Typography>
+          <Typography variant="h5">Telnyx WTNX Bridge</Typography>
         </div>
         <div className={classes.headerLinks}>
           {indexerEnabled ? (

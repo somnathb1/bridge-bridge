@@ -30,7 +30,7 @@ export type NetworkManagerState = {
   homeChainConfig?: BridgeConfig
   homeChains: Array<BridgeConfig>
   destinationChainConfig?: BridgeConfig
-  destinationChains: Array<BridgeConfig>
+  destinationChains: any
   transactionStatus?: TransactionStatus
   depositNonce?: string
   depositVotes: number // WE ARE NO REALLY USING THIS ON THE CONTEXT PROVIDER

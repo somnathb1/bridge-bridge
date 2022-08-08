@@ -10,7 +10,9 @@ import {
   useChainbridge,
   useHomeBridge,
   useNetworkManager,
+  useDestinationBridge,
   useWeb3,
+  LocalProvider,
 } from "@chainsafe/chainbridge-ui-core";
 import { showImageUrl } from "../../utils/Helpers";
 import { useStyles } from "./styles";
@@ -61,13 +63,16 @@ const TransferPage = () => {
     destinationChains,
     address,
     checkSupplies,
+
   } = useChainbridge();
 
-  const { accounts, selectAccount } = useHomeBridge();
+  const { accounts, selectAccount  } = useHomeBridge();
   const [aboutOpen, setAboutOpen] = useState<boolean>(false);
   const [walletConnecting, setWalletConnecting] = useState(false);
   const [changeNetworkOpen, setChangeNetworkOpen] = useState<boolean>(false);
   const [preflightModalOpen, setPreflightModalOpen] = useState<boolean>(false);
+
+  // window.__RUNTIME_CONFIG__.destinationBridge.mgr = useDestinationBridge();
 
   const [preflightDetails, setPreflightDetails] = useState<PreflightDetails>({
     receiver: "",
@@ -133,8 +138,8 @@ const TransferPage = () => {
         <section>
           <SelectDestinationNetwork
             label="Destination Network"
-            disabled={!homeConfig || formState.isSubmitting}
-            options={destinationChains.map((dc: any) => ({
+             disabled={!homeConfig || formState.isSubmitting}
+            options={[destinationChains].map((dc: any) => ({
               label: dc.name,
               value: dc.domainId,
             }))}
@@ -274,6 +279,7 @@ const TransferPage = () => {
               preflightDetails.receiver,
               preflightDetails.token
             );
+          
         }}
         sourceNetwork={homeConfig?.name || ""}
         targetNetwork={destinationChainConfig?.name || ""}

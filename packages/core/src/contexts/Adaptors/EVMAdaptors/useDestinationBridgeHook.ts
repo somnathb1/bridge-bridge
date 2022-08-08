@@ -14,6 +14,9 @@ export function useDestinationBridgeHook(
   useEffect(() => {
     if (destinationBridge) return;
     const provider = getProvider(destinationChainConfig);
+
+    console.log("useDestinationBridgeHook: Hello brother we are here");
+    console.log(provider);
     if (destinationChainConfig && provider) {
       const bridge = BridgeFactory.connect(
         (destinationChainConfig as EvmBridgeConfig).bridgeAddress,

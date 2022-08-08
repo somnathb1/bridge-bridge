@@ -8,8 +8,11 @@
     "@babel/core": "^7.12.3",
     "@babel/runtime": "^7.12.1",
     "@celo-tools/celo-ethers-wrapper": "^0.0.5",
+
     "@chainsafe/chainbridge-contracts": "2.0.0",
+    
     "@chainsafe/chainbridge-ui-core": "link:../core",
+
     "@chainsafe/common-components": "1.0.26",
     "@chainsafe/common-theme": "1.0.10",
     "@chainsafe/web3-context": "1.2.0",
@@ -40,9 +43,9 @@
     "styled-components": "^5.3.3",
     "yup": "^0.29.3",
     "@walletconnect/ethereum-provider": "^1.7.5",
-    "@web3-react/core": "8.0.19-beta.0",
-    "@web3-react/empty": "8.0.10-beta.0",
-    "@web3-react/metamask": "8.0.16-beta.0",
+    "@web3-react/core": "6.1.9",
+    "@web3-react/empty": "6.1.9",
+    "@web3-react/metamask": "6.1.9",
     "@web3-react/types": "8.0.10-beta.0",
     "@web3-react/walletconnect": "8.0.23-beta.0",
     "@fusion-icons/react": "0.0.0"

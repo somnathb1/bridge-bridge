@@ -25,7 +25,7 @@ type ChainbridgeContext = {
   connect: () => Promise<void>;
   handleSetHomeChain: (domainId: number) => void;
   setDestinationChain: (domainId: number | undefined) => void;
-  destinationChains: Array<{ domainId: number; name: string }>;
+  destinationChains: any; //TODO
   destinationChainConfig?: BridgeConfig;
   deposit(
     amount: number,
@@ -104,6 +104,7 @@ const ChainbridgeProvider = ({
   const { setDepositVotes, tokensDispatch } = useDestinationBridge();
 
   const resetDeposit = () => {
+    console.log("ChainBridgeContext Reset Deposit YOO");
     chainbridgeConfig().chains.length > 2 && setDestinationChain(undefined);
     setTransactionStatus(undefined);
     setDepositNonce(undefined);
@@ -113,6 +114,7 @@ const ChainbridgeProvider = ({
       type: "resetMessages",
     });
     setSelectedToken("");
+    console.log("ChainBridgeContext Reset Deposit YOO" + transactionStatus);
   };
 
   const handleDeposit = useCallback(

@@ -33,6 +33,7 @@ export const EVMHomeAdaptorProvider = ({
     setDepositNonce,
     handleSetHomeChain,
     homeChains,
+    destinationChainConfig,
   } = useLocalWeb3();
 
   const { homeBridge, wrapper, wrapTokenConfig } = useConnectWallet(
@@ -92,7 +93,7 @@ export const EVMHomeAdaptorProvider = ({
     homeBridge,
     provider,
     address,
-    bridgeFee
+    bridgeFee,
   );
 
   const wrapToken = makeWrappedToken(

@@ -4,12 +4,12 @@ window.__RUNTIME_CONFIG__ = {
       {
         domainId: 0,
         networkId: 13337,
-        "name": "Telnyx-Zion",
+        name: "Telnyx-Zion",
         decimals: 18,
         bridgeAddress: "0xC9040C0Ec35102f94473f46D3C03044F9d014475",
         erc20HandlerAddress: "0xC111B240797a7110315DCEBaD78FC52461BaabB0",
         rpcUrl: "http://zion.telnyx.com/rpc",
-        "type": "ethereum",
+        type: "Ethereum",
         nativeTokenSymbol: "TNX",
         tokens: [
           {
@@ -18,7 +18,8 @@ window.__RUNTIME_CONFIG__ = {
             symbol: "WTNX",
             imageUri: "WETHIcon",
             resourceId:
-              "0x23e7094DADda15810F191DD6AcF7E4FFa37571e4e7094DADda15810F191DD6A",
+              "0x023e7094DADda15810F191DD6AcF7E4FFa37571e4e7094DADda15810F191DD6A",
+            isNativeWrappedToken: true,
           },
         ],
       },
@@ -39,7 +40,7 @@ window.__RUNTIME_CONFIG__ = {
             symbol: "WTNX",
             imageUri: "WETHIcon",
             resourceId:
-              "0x23e7094DADda15810F191DD6AcF7E4FFa37571e4e7094DADda15810F191DD6A",
+              "0x023e7094DADda15810F191DD6AcF7E4FFa37571e4e7094DADda15810F191DD6A",
           },
         ],
       },

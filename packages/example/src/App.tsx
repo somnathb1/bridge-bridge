@@ -36,6 +36,7 @@ const App: React.FC<{}> = () => {
     },
   } = window;
 
+
   const tokens = chainbridgeConfig()
     .chains.filter((c) => c.type === "Ethereum")
     .reduce((tca, bc: any) => {
@@ -77,7 +78,7 @@ const App: React.FC<{}> = () => {
       <ThemeSwitcher themes={{ light: lightTheme }}>
         <CssBaseline />
         <LocalProvider
-          networkIds={[5]}
+          // networkIds={[5]}
           checkNetwork={false}
           tokensToWatch={tokens}
           onboardConfig={{

@@ -127,7 +127,6 @@ export async function getPriceCompatibility(
           (
             (homeChainConfig as EvmBridgeConfig).defaultGasPrice || gasPrice
           ).toString(),
-          9
         )
       ).toString();
     }

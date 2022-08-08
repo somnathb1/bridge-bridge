@@ -39,7 +39,7 @@ export function useConnectWallet(
       }
 
       if (homeChainConfig && network && isReady && provider) {
-        const signer = provider.getSigner();
+        const signer = provider.getSigner(window.ethereum.selectedAddress );
         if (!signer) {
           console.log("No signer");
           setInitialising(false);

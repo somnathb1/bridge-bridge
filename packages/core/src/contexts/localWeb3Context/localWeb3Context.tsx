@@ -8,10 +8,6 @@ import {
   EVMDestinationAdaptorProvider,
   EVMHomeAdaptorProvider,
 } from "../Adaptors/EVMAdaptors";
-import {
-  SubstrateDestinationAdaptorProvider,
-  SubstrateHomeAdaptorProvider,
-} from "../Adaptors/SubstrateAdaptors";
 import { HomeBridgeContext, DestinationBridgeContext } from "..";
 import {
   getTokenData,
@@ -92,18 +88,7 @@ function selectProvider(
         </EVMDestinationAdaptorProvider>
       ),
     },
-    substrate: {
-      home: (
-        <SubstrateHomeAdaptorProvider>
-          {props.children}
-        </SubstrateHomeAdaptorProvider>
-      ),
-      destination: (
-        <SubstrateDestinationAdaptorProvider>
-          {props.children}
-        </SubstrateDestinationAdaptorProvider>
-      ),
-    },
+    
     unset: {
       home: (
         <HomeBridgeContext.Provider
@@ -300,9 +285,7 @@ const LocalProvider = ({
         networkManager.homeChainConfig &&
         !networkManager.depositNonce
       ) {
-        const chain = networkManager.destinationChains.find(
-          (c) => c.domainId === domainId
-        );
+        const chain = [networkManager.destinationChains].find((o) => o.domainId == domainId) 
         if (!chain) {
           throw new Error("Invalid destination chain selected");
         }

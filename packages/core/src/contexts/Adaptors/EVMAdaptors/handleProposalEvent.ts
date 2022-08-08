@@ -16,52 +16,53 @@ const handleProposalEvent = (
   setTransferTxHash: (input: string) => void,
   tokensDispatch: Dispatch<AddMessageAction | ResetAction>
 ) => {
-  destinationBridge.on(
-    destinationBridge.filters.ProposalEvent(null, null, null, null),
-    async (
-      originDomainId: number,
-      depositNonce: number,
-      status: number,
-      dataHash: string,
-      tx: Event
-    ) => {
-      const txReceipt = await tx.getTransactionReceipt();
-      const proposalStatus = BigNumber.from(status).toNumber();
-      switch (proposalStatus) {
-        case 1:
-          tokensDispatch({
-            type: "addMessage",
-            payload: {
-              address: String(txReceipt.from),
-              message: `Proposal created on ${destinationChainConfig.name}`,
-              proposalStatus: proposalStatus,
-              order: proposalStatus,
-              eventType: "Proposal",
-            },
-          });
-          break;
-        case 2:
-          tokensDispatch({
-            type: "addMessage",
-            payload: {
-              address: String(txReceipt.from),
-              message: `Proposal has passed. Executing...`,
-              proposalStatus: proposalStatus,
-              order: proposalStatus,
-              eventType: "Proposal",
-            },
-          });
-          break;
-        case 3:
-          setTransactionStatus("Transfer Completed");
-          setTransferTxHash(tx.transactionHash);
-          break;
-        case 4:
-          setTransactionStatus("Transfer Aborted");
-          setTransferTxHash(tx.transactionHash);
-          break;
-      }
-    }
-  );
+  // destinationBridge.on(
+  //   destinationBridge.filters.ProposalEvent(null, null, null, null),
+  //   async (
+  //     originDomainId: number,
+  //     depositNonce: number,
+  //     status: number,
+  //     dataHash: string,
+  //     tx: Event
+  //   ) => {
+  //     console.log("handleProposalEvent: YO YO YO Destionation bridge yoo");
+  //     const txReceipt = await tx.getTransactionReceipt();
+  //     const proposalStatus = BigNumber.from(status).toNumber();
+  //     switch (proposalStatus) {
+  //       case 1:
+  //         tokensDispatch({
+  //           type: "addMessage",
+  //           payload: {
+  //             address: String(txReceipt.from),
+  //             message: `Proposal created on ${destinationChainConfig.name}`,
+  //             proposalStatus: proposalStatus,
+  //             order: proposalStatus,
+  //             eventType: "Proposal",
+  //           },
+  //         });
+  //         break;
+  //       case 2:
+  //         tokensDispatch({
+  //           type: "addMessage",
+  //           payload: {
+  //             address: String(txReceipt.from),
+  //             message: `Proposal has passed. Executing...`,
+  //             proposalStatus: proposalStatus,
+  //             order: proposalStatus,
+  //             eventType: "Proposal",
+  //           },
+  //         });
+  //         break;
+  //       case 3:
+  //         setTransactionStatus("Transfer Completed");
+  //         setTransferTxHash(tx.transactionHash);
+  //         break;
+  //       case 4:
+  //         setTransactionStatus("Transfer Aborted");
+  //         setTransferTxHash(tx.transactionHash);
+  //         break;
+  //     }
+  //   }
+  // );
 };
 export default handleProposalEvent;
